@@ -1,13 +1,13 @@
-import { Plus, Check, X, ShieldAlert } from "lucide-react";
+import { Check, X, ShieldAlert } from "lucide-react";
+import { getEmployees } from "./actions";
+import HeaderActions from "./components/HeaderActions";
+import ToggleStatusButton from "./components/ToggleStatusButton";
 
-// Mock data (Listo para conectar con Supabase Auth/DB)
-const USERS = [
-  { id: 1, name: "Carlos Martínez", email: "cmartinez@wilsonpineda.com", role: "Administrador", status: "Activo" },
-  { id: 2, name: "Laura Gómez", email: "lgomez@wilsonpineda.com", role: "Gestor de Ayudas", status: "Inactivo" },
-  { id: 3, name: "Mario Cerna", email: "mcerna@wilsonpineda.com", role: "Gestor de Ayudas", status: "Activo" },
-];
+export const dynamic = 'force-dynamic'
 
-export default function UsuariosPage() {
+export default async function UsuariosPage() {
+  const USERS = await getEmployees() || [];
+
   return (
     <div className="max-w-7xl mx-auto w-full">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
@@ -16,10 +16,7 @@ export default function UsuariosPage() {
           <p className="text-white/70 mt-1">Administra los accesos al sistema legislativo.</p>
         </div>
         
-        <button className="flex items-center justify-center gap-2 bg-white text-brand-primary hover:bg-gray-50 font-semibold py-2.5 px-5 rounded-xl shadow-apple transition-all duration-300 hover:-translate-y-0.5">
-          <Plus className="w-5 h-5" />
-          Registrar Empleado
-        </button>
+        <HeaderActions />
       </div>
       
       <div className="bg-white rounded-2xl shadow-apple-lg border border-gray-100/50 overflow-hidden">
@@ -35,7 +32,7 @@ export default function UsuariosPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
-              {USERS.map((user) => (
+              {USERS.map((user: any) => (
                 <tr key={user.id} className="hover:bg-gray-50/50 transition-colors">
                   <td className="px-6 py-4 font-medium text-gray-900">{user.name}</td>
                   <td className="px-6 py-4 text-gray-500">{user.email}</td>
@@ -60,15 +57,19 @@ export default function UsuariosPage() {
                       Editar
                     </button>
                     <span className="text-gray-300 mx-3">|</span>
-                    <button className={`${user.status === 'Activo' ? 'text-red-500 hover:text-red-600' : 'text-green-500 hover:text-green-600'} font-medium transition-colors`}>
-                      {user.status === 'Activo' ? 'Desactivar' : 'Activar'}
-                    </button>
+                    <ToggleStatusButton id={user.id} status={user.status} />
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+        
+        {USERS.length === 0 && (
+          <div className="p-12 text-center text-gray-500">
+            No hay empleados registrados. Presiona "Registrar Empleado" para comenzar.
+          </div>
+        )}
       </div>
     </div>
   );
