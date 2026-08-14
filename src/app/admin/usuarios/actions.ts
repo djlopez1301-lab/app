@@ -23,7 +23,12 @@ export async function createEmployee(formData: FormData) {
   const role = formData.get('role') as string
   const password = formData.get('password') as string
 
-  const supabase = createAdminClient()
+  let supabase;
+  try {
+    supabase = createAdminClient()
+  } catch (err: any) {
+    return { error: 'Error de configuración: Faltan llaves de entorno en el servidor.' }
+  }
 
   // 1. Crear el usuario en auth.users
   const { data: authData, error: authError } = await supabase.auth.admin.createUser({

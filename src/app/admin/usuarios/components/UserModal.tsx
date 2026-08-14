@@ -13,13 +13,20 @@ export default function UserModal({ isOpen, onClose }: { isOpen: boolean, onClos
   async function handleSubmit(formData: FormData) {
     setLoading(true)
     setError(null)
-    const res = await createEmployee(formData)
-    if (res?.error) {
-      setError(res.error)
+    
+    try {
+      const res = await createEmployee(formData)
+      if (res?.error) {
+        setError(res.error)
+        setLoading(false)
+      } else {
+        setLoading(false)
+        onClose()
+      }
+    } catch (err) {
+      console.error(err)
+      setError("Error interno del servidor. ¿Verificaste que guardaste la llave SERVICE_ROLE en Vercel y recargaste?")
       setLoading(false)
-    } else {
-      setLoading(false)
-      onClose()
     }
   }
 
