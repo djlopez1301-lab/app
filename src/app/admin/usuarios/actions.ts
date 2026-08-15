@@ -88,3 +88,28 @@ export async function toggleEmployeeStatus(id: string, currentStatus: string) {
   revalidatePath('/admin/usuarios')
   return { success: true }
 }
+
+export async function updateEmployee(formData: FormData) {
+  try {
+    const id = formData.get('id') as string
+    const name = formData.get('name') as string
+    const role = formData.get('role') as string
+
+    const supabase = createAdminClient()
+
+    const { error: dbError } = await supabase
+      .from('empleados')
+      .update({ name, role })
+      .eq('id', id)
+
+    if (dbError) {
+      return { error: 'Error al actualizar el perfil en la base de datos: ' + dbError.message }
+    }
+
+    revalidatePath('/admin/usuarios')
+    return { success: true }
+  } catch (err) {
+    console.error("Critical error in updateEmployee:", err);
+    return { error: "Error interno del servidor al actualizar empleado." }
+  }
+}
