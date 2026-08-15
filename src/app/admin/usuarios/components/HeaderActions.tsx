@@ -9,6 +9,7 @@ export default function HeaderActions() {
   return (
     <>
       <button 
+        type="button"
         onClick={() => setIsModalOpen(true)}
         className="flex items-center justify-center gap-2 bg-white text-brand-primary hover:bg-gray-50 font-semibold py-2.5 px-5 rounded-xl shadow-apple transition-all duration-300 hover:-translate-y-0.5"
       >

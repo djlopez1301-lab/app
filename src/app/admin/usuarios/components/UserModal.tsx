@@ -13,7 +13,6 @@ export default function UserModal({ isOpen, onClose }: { isOpen: boolean, onClos
   async function handleSubmit(formData: FormData) {
     setLoading(true)
     setError(null)
-    
     try {
       const res = await createEmployee(formData)
       if (res?.error) {
@@ -23,9 +22,8 @@ export default function UserModal({ isOpen, onClose }: { isOpen: boolean, onClos
         setLoading(false)
         onClose()
       }
-    } catch (err) {
-      console.error(err)
-      setError("Error interno del servidor. ¿Verificaste que guardaste la llave SERVICE_ROLE en Vercel y recargaste?")
+    } catch (err: any) {
+      setError(err.message || "Error del servidor. Por favor revisa que agregaste la llave correctamente en Vercel.")
       setLoading(false)
     }
   }
