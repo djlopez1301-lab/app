@@ -4,6 +4,8 @@ import { useState } from 'react'
 import BrandLogo from "@/components/BrandLogo";
 import { resetPassword } from "./actions";
 
+import { FadeIn } from "@/components/animations/FadeIn";
+
 export default function RecuperarPage() {
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
@@ -27,11 +29,11 @@ export default function RecuperarPage() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-brand-secondary to-brand-primary p-4">
       <div className="w-full max-w-md">
-        <div className="flex justify-center mb-10">
+        <FadeIn delay={0.1} className="flex justify-center mb-10">
           <BrandLogo className="scale-90" />
-        </div>
+        </FadeIn>
         
-        <div className="bg-white rounded-2xl shadow-apple-lg p-8 sm:p-10 relative overflow-hidden">
+        <FadeIn delay={0.2} className="bg-white rounded-2xl shadow-apple-lg p-8 sm:p-10 relative overflow-hidden">
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-2">
             Recuperar Contraseña
           </h2>
@@ -88,7 +90,7 @@ export default function RecuperarPage() {
               </div>
             </form>
           )}
-        </div>
+        </FadeIn>
       </div>
     </main>
   );
