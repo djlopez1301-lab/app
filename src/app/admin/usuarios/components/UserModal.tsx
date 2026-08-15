@@ -22,8 +22,9 @@ export default function UserModal({ isOpen, onClose }: { isOpen: boolean, onClos
         setLoading(false)
         onClose()
       }
-    } catch (err: any) {
-      setError(err.message || "Error del servidor. Por favor revisa que agregaste la llave correctamente en Vercel.")
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Error del servidor. Por favor revisa que agregaste la llave correctamente en Vercel.";
+      setError(errorMessage)
       setLoading(false)
     }
   }

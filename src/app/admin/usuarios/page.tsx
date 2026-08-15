@@ -32,6 +32,7 @@ export default async function UsuariosPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
               {USERS.map((user: any) => (
                 <tr key={user.id} className="hover:bg-gray-50/50 transition-colors">
                   <td className="px-6 py-4 font-medium text-gray-900">{user.name}</td>
@@ -67,7 +68,7 @@ export default async function UsuariosPage() {
         
         {USERS.length === 0 && (
           <div className="p-12 text-center text-gray-500">
-            No hay empleados registrados. Presiona "Registrar Empleado" para comenzar.
+            No hay empleados registrados. Presiona &quot;Registrar Empleado&quot; para comenzar.
           </div>
         )}
       </div>
