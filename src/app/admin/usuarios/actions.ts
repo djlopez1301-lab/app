@@ -65,9 +65,10 @@ export async function createEmployee(formData: FormData) {
 
     revalidatePath('/admin/usuarios')
     return { success: true }
-  } catch (err: any) {
+  } catch (err) {
     console.error("Critical error in createEmployee:", err);
-    return { error: "Error interno del servidor al crear empleado: " + (err.message || String(err)) }
+    const errorMessage = err instanceof Error ? err.message : String(err);
+    return { error: "Error interno del servidor al crear empleado: " + errorMessage }
   }
 }
 
