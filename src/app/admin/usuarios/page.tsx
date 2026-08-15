@@ -4,6 +4,9 @@ import HeaderActions from "./components/HeaderActions";
 import ToggleStatusButton from "./components/ToggleStatusButton";
 import EditButton from "./components/EditButton";
 
+import { FadeIn } from "@/components/animations/FadeIn";
+import { StaggeredTableBody, StaggeredItem } from "@/components/animations/StaggeredList";
+
 export const dynamic = 'force-dynamic'
 
 export default async function UsuariosPage() {
@@ -11,16 +14,16 @@ export default async function UsuariosPage() {
 
   return (
     <div className="max-w-7xl mx-auto w-full">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+      <FadeIn className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
         <div>
           <h1 className="text-3xl font-bold text-white tracking-tight">Directorio de Empleados</h1>
           <p className="text-white/70 mt-1">Administra los accesos al sistema legislativo.</p>
         </div>
         
         <HeaderActions />
-      </div>
+      </FadeIn>
       
-      <div className="bg-white rounded-2xl shadow-apple-lg border border-gray-100/50 overflow-hidden">
+      <FadeIn delay={0.1} className="bg-white rounded-2xl shadow-apple-lg border border-gray-100/50 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left">
             <thead className="bg-gray-50/50 text-gray-500 font-medium border-b border-gray-100 uppercase tracking-wider text-xs">
@@ -32,10 +35,10 @@ export default async function UsuariosPage() {
                 <th className="px-6 py-5 text-right">Acciones</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-50">
+            <StaggeredTableBody className="divide-y divide-gray-50">
               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
               {USERS.map((user: any) => (
-                <tr key={user.id} className="hover:bg-gray-50/50 transition-colors">
+                <StaggeredItem key={user.id} className="hover:bg-gray-50/50 transition-colors">
                   <td className="px-6 py-4 font-medium text-gray-900">{user.name}</td>
                   <td className="px-6 py-4 text-gray-500">{user.email}</td>
                   <td className="px-6 py-4">
@@ -59,9 +62,9 @@ export default async function UsuariosPage() {
                     <span className="text-gray-300 mx-3">|</span>
                     <ToggleStatusButton id={user.id} status={user.status} />
                   </td>
-                </tr>
+                </StaggeredItem>
               ))}
-            </tbody>
+            </StaggeredTableBody>
           </table>
         </div>
         
@@ -70,7 +73,7 @@ export default async function UsuariosPage() {
             No hay empleados registrados. Presiona &quot;Registrar Empleado&quot; para comenzar.
           </div>
         )}
-      </div>
+      </FadeIn>
     </div>
   );
 }
