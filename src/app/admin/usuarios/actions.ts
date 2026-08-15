@@ -4,17 +4,22 @@ import { createAdminClient } from '@/utils/supabase/admin'
 import { revalidatePath } from 'next/cache'
 
 export async function getEmployees() {
-  const supabase = createAdminClient()
-  const { data, error } = await supabase
-    .from('empleados')
-    .select('*')
-    .order('created_at', { ascending: false })
-    
-  if (error) {
-    console.error('Error fetching employees:', error)
+  try {
+    const supabase = createAdminClient()
+    const { data, error } = await supabase
+      .from('empleados')
+      .select('*')
+      .order('created_at', { ascending: false })
+      
+    if (error) {
+      console.error('Error fetching employees:', error)
+      return []
+    }
+    return data
+  } catch (e) {
+    console.error('Admin client error:', e)
     return []
   }
-  return data
 }
 
 export async function createEmployee(formData: FormData) {
