@@ -8,9 +8,8 @@ export async function resetPassword(formData: FormData) {
     const supabase = createClient()
 
     // Enviar correo de recuperación. Redirigirá a /auth/callback primero para establecer sesión SSR, 
-    // y luego a /actualizar-clave
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/auth/callback?next=/actualizar-clave`,
+      redirectTo: 'https://app.wilsonpineda.com/auth/callback?next=/actualizar-clave',
     })
 
     if (error) {
