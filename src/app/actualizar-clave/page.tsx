@@ -2,18 +2,32 @@
 
 import { useState } from 'react'
 import BrandLogo from "@/components/BrandLogo";
-import { login } from "./actions";
+import { updatePassword } from "./actions";
 
-export default function LoginPage() {
+export default function ActualizarClavePage() {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
   async function handleSubmit(formData: FormData) {
+    const password = formData.get('password') as string
+    const confirm = formData.get('confirm_password') as string
+
+    if (password !== confirm) {
+      setError("Las contraseñas no coinciden")
+      return
+    }
+
+    if (password.length < 6) {
+      setError("La contraseña debe tener al menos 6 caracteres")
+      return
+    }
+
     setLoading(true)
     setError(null)
     
-    const result = await login(formData)
+    const result = await updatePassword(formData)
     
+    // Si la función hace el redirect, esto no se ejecuta. Si retorna un error, lo mostramos.
     if (result?.error) {
       setError(result.error)
       setLoading(false)
@@ -27,42 +41,40 @@ export default function LoginPage() {
           <BrandLogo className="scale-90" />
         </div>
         
-        <div className="bg-white rounded-2xl shadow-apple-lg p-8 sm:p-10">
-          <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
-            Acceso Administrativo
+        <div className="bg-white rounded-2xl shadow-apple-lg p-8 sm:p-10 relative overflow-hidden">
+          <h2 className="text-2xl font-bold text-gray-900 text-center mb-2">
+            Nueva Contraseña
           </h2>
+          <p className="text-gray-500 text-center mb-8 text-sm">
+            Escribe una contraseña segura que puedas recordar.
+          </p>
           
           {error && (
             <div className="bg-red-50 text-red-600 px-4 py-3 rounded-xl mb-6 text-sm font-medium border border-red-100">
               {error}
             </div>
           )}
-          
+
           <form action={handleSubmit} className="space-y-5">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Correo Electrónico
+                Nueva Contraseña
               </label>
               <input 
-                name="email"
-                type="email" 
+                name="password"
+                type="password" 
                 required
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all duration-200 bg-gray-50"
-                placeholder="usuario@wilsonpineda.com"
+                placeholder="••••••••"
               />
             </div>
-            
+
             <div>
-              <div className="flex justify-between items-center mb-1">
-                <label className="block text-sm font-medium text-gray-700">
-                  Contraseña
-                </label>
-                <a href="/recuperar" className="text-sm font-medium text-brand-primary hover:text-brand-secondary transition-colors">
-                  ¿Olvidaste tu contraseña?
-                </a>
-              </div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Confirmar Contraseña
+              </label>
               <input 
-                name="password"
+                name="confirm_password"
                 type="password" 
                 required
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all duration-200 bg-gray-50"
@@ -78,16 +90,10 @@ export default function LoginPage() {
               {loading ? (
                 <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
               ) : (
-                'Iniciar Sesión'
+                'Guardar y Entrar'
               )}
             </button>
           </form>
-          
-          <div className="mt-8 text-center">
-            <p className="text-xs text-gray-400">
-              Sistema Interno Protegido &copy; {new Date().getFullYear()}
-            </p>
-          </div>
         </div>
       </div>
     </main>
