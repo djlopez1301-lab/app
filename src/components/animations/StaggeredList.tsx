@@ -1,9 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { ReactNode } from 'react'
 
-const container = {
+const container: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -13,9 +13,9 @@ const container = {
   }
 }
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.4 } }
+  show: { opacity: 1, y: 0, transition: { ease: [0.25, 0.4, 0.25, 1], duration: 0.4 } }
 }
 
 export function StaggeredContainer({ children, className = "" }: { children: ReactNode, className?: string }) {
