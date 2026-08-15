@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const dancingScript = Dancing_Script({ subsets: ["latin"], variable: "--font-dancing-script" });
 
 export const metadata: Metadata = {
-  title: "Sistema Legislativo | Wilson Pineda",
+  title: "Por lempira siempre | Wilson Pineda",
   description: "Sistema de gestión y registro",
 };
 

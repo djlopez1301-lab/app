@@ -16,8 +16,8 @@ export default async function UsuariosPage() {
     <div className="max-w-7xl mx-auto w-full">
       <FadeIn className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">Directorio de Empleados</h1>
-          <p className="text-white/70 mt-1">Administra los accesos al sistema legislativo.</p>
+          <h1 className="text-3xl font-bold text-white tracking-tight">Directorio de Usuarios</h1>
+          <p className="text-white/70 mt-1">Administra los accesos a &quot;Por lempira siempre&quot;.</p>
         </div>
         
         <HeaderActions />
@@ -70,7 +70,7 @@ export default async function UsuariosPage() {
         
         {USERS.length === 0 && (
           <div className="p-12 text-center text-gray-500">
-            No hay empleados registrados. Presiona &quot;Registrar Empleado&quot; para comenzar.
+            No hay usuarios registrados. Presiona &quot;Registrar Usuario&quot; para comenzar.
           </div>
         )}
       </FadeIn>

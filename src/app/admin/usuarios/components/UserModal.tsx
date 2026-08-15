@@ -47,7 +47,7 @@ export default function UserModal({ isOpen, onClose }: { isOpen: boolean, onClos
             className="bg-white rounded-2xl shadow-apple-lg w-full max-w-md overflow-hidden relative z-10"
           >
             <div className="flex justify-between items-center p-6 border-b border-gray-100">
-              <h3 className="text-xl font-bold text-brand-secondary">Registrar Empleado</h3>
+              <h3 className="text-xl font-bold text-brand-secondary">Registrar Usuario</h3>
               <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors">
                 <X className="w-5 h-5" />
               </button>
@@ -82,7 +82,7 @@ export default function UserModal({ isOpen, onClose }: { isOpen: boolean, onClos
               <div className="pt-4 flex gap-3">
                 <button type="button" onClick={onClose} className="flex-1 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-xl transition-colors">Cancelar</button>
                 <button type="submit" disabled={loading} className="flex-1 py-2.5 bg-brand-primary hover:bg-brand-secondary text-white font-medium rounded-xl transition-colors disabled:opacity-70">
-                  {loading ? 'Guardando...' : 'Guardar Empleado'}
+                  {loading ? 'Guardando...' : 'Guardar Usuario'}
                 </button>
               </div>
             </form>

@@ -56,7 +56,7 @@ export default function EditUserModal({ isOpen, onClose, user }: { isOpen: boole
             className="bg-white rounded-2xl shadow-apple-lg w-full max-w-md overflow-hidden relative z-10"
           >
             <div className="flex justify-between items-center p-6 border-b border-gray-100">
-              <h3 className="text-xl font-bold text-brand-secondary">Editar Empleado</h3>
+              <h3 className="text-xl font-bold text-brand-secondary">Editar Usuario</h3>
               <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors">
                 <X className="w-5 h-5" />
               </button>
