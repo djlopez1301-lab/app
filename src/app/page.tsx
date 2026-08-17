@@ -14,20 +14,23 @@ export default function Home() {
       
       <main className="flex flex-col w-full flex-1">
         {/* Hero Section */}
-        <section className="relative flex items-center min-h-[400px] max-h-[50vh] w-full shadow-inner">
-          {/* Background Image with Object Cover */}
+        <section className="relative flex items-center h-[420px] w-full overflow-hidden">
+          {/* Background Image - anchored to left so subjects sit on right clean area */}
           <div className="absolute inset-0 z-0">
             <Image
               src="/hero-bg.jpg"
               alt="Niños en clase"
               fill
               priority
-              className="object-cover object-[0%_30%]"
+              className="object-cover object-left-top"
+              style={{ objectPosition: '15% center' }}
             />
           </div>
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0d346b] from-10% via-[#0d346b]/80 via-45% to-transparent to-65%"></div>
+          {/* Gradient: strong blue only on left 35%, fully transparent by 50% */}
+          <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to right, #0d346b 0%, #0d346b 25%, rgba(13,52,107,0.7) 38%, rgba(13,52,107,0.1) 50%, transparent 58%)' }}></div>
+          {/* Bottom shadow from header */}
+          <div className="absolute top-0 left-0 right-0 h-8 z-10" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.15), transparent)' }}></div>
 
           {/* Content Container */}
           <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-12 md:px-20 lg:px-24 py-16">
