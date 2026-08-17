@@ -14,7 +14,7 @@ export default function Home() {
       
       <main className="flex flex-col w-full flex-1">
         {/* Hero Section */}
-        <section className="relative flex items-center h-[480px] w-full overflow-hidden bg-[#0d346b]">
+        <section className="relative flex items-center h-[380px] w-full overflow-hidden bg-[#0d346b]">
           {/* Image Container - Right 70% of screen */}
           <div className="absolute inset-y-0 right-0 w-full md:w-[75%] lg:w-[70%] z-0">
             <Image
@@ -32,7 +32,7 @@ export default function Home() {
           <div className="absolute top-0 left-0 right-0 h-8 z-10" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.15), transparent)' }}></div>
 
           {/* Content Container */}
-          <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-12 md:px-20 lg:px-24 py-16">
+          <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-8 md:px-10 lg:px-12 py-8">
             <div className="max-w-xl">
               <FadeIn>
                 <h1 className="text-white font-bold text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight">
