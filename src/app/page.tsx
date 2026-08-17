@@ -14,19 +14,19 @@ export default function Home() {
       
       <main className="flex flex-col w-full flex-1">
         {/* Hero Section */}
-        <section className="relative flex items-center h-[380px] w-full overflow-hidden bg-[#0d346b]">
-          {/* Image Container - Right 70% of screen */}
-          <div className="absolute inset-y-0 right-0 w-full md:w-[75%] lg:w-[70%] z-0">
+        <section className="relative flex items-center h-[400px] w-full overflow-hidden bg-[#0d346b]">
+          {/* Image Container - Right 65% of screen */}
+          <div className="absolute inset-y-0 right-0 w-full md:w-[70%] lg:w-[65%] z-0">
             <Image
               src="/hero-bg.jpg"
-              alt="Plantando un árbol con una niña"
+              alt="Niños en clase con Wilson Pineda"
               fill
               priority
               className="object-cover"
-              style={{ objectPosition: 'center 45%' }}
+              style={{ objectPosition: '50% 45%' }}
             />
-            {/* Gradient to blend image into the solid blue left side */}
-            <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to right, #0d346b 0%, rgba(13,52,107,0.7) 20%, rgba(13,52,107,0.15) 35%, transparent 45%)' }}></div>
+            {/* Soft gradient on the very left edge of the image to blend seamlessly into solid blue */}
+            <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to right, #0d346b 0%, rgba(13,52,107,0.8) 12%, rgba(13,52,107,0.2) 22%, transparent 32%)' }}></div>
           </div>
           {/* Bottom shadow from header */}
           <div className="absolute top-0 left-0 right-0 h-8 z-10" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.15), transparent)' }}></div>
