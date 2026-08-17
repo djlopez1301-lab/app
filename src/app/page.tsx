@@ -14,7 +14,7 @@ export default function Home() {
       
       <main className="flex flex-col w-full flex-1">
         {/* Hero Section */}
-        <section className="relative flex items-center h-[420px] w-full overflow-hidden">
+        <section className="relative flex items-center h-[480px] w-full overflow-hidden">
           {/* Background Image - anchored to left so subjects sit on right clean area */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -22,13 +22,13 @@ export default function Home() {
               alt="Niños en clase"
               fill
               priority
-              className="object-cover object-left-top"
-              style={{ objectPosition: '15% center' }}
+              className="object-cover"
+              style={{ objectPosition: '35% center' }}
             />
           </div>
 
           {/* Gradient: strong blue only on left 35%, fully transparent by 50% */}
-          <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to right, #0d346b 0%, #0d346b 25%, rgba(13,52,107,0.7) 38%, rgba(13,52,107,0.1) 50%, transparent 58%)' }}></div>
+          <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to right, #0d346b 0%, #0d346b 20%, rgba(13,52,107,0.6) 30%, rgba(13,52,107,0.05) 42%, transparent 50%)' }}></div>
           {/* Bottom shadow from header */}
           <div className="absolute top-0 left-0 right-0 h-8 z-10" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.15), transparent)' }}></div>
 
