@@ -22,7 +22,7 @@ export default function Home() {
               alt="Niños en clase"
               fill
               priority
-              className="object-cover object-[75%_center]"
+              className="object-cover object-right"
             />
           </div>
 
