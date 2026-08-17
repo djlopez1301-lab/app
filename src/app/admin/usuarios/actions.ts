@@ -113,3 +113,22 @@ export async function updateEmployee(formData: FormData) {
     return { error: "Error interno del servidor al actualizar empleado." }
   }
 }
+
+export async function deleteEmployee(id: string) {
+  try {
+    const supabase = createAdminClient()
+
+    // Eliminar de Supabase Auth (esto eliminará automáticamente de public.empleados por ON DELETE CASCADE)
+    const { error: authError } = await supabase.auth.admin.deleteUser(id)
+
+    if (authError) {
+      return { error: 'Error al eliminar el usuario: ' + authError.message }
+    }
+
+    revalidatePath('/admin/usuarios')
+    return { success: true }
+  } catch (err) {
+    console.error("Critical error in deleteEmployee:", err);
+    return { error: "Error interno del servidor al eliminar empleado." }
+  }
+}

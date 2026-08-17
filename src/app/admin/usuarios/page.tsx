@@ -4,6 +4,7 @@ import HeaderActions from "./components/HeaderActions";
 import ToggleStatusButton from "./components/ToggleStatusButton";
 import EditButton from "./components/EditButton";
 
+import DeleteButton from "./components/DeleteButton";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggeredTableBody, StaggeredItem } from "@/components/animations/StaggeredList";
 
@@ -57,10 +58,12 @@ export default async function UsuariosPage() {
                       {user.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-right">
+                  <td className="px-6 py-4 text-right flex items-center justify-end">
                     <EditButton user={{ id: user.id, name: user.name, role: user.role }} />
                     <span className="text-gray-300 mx-3">|</span>
                     <ToggleStatusButton id={user.id} status={user.status} />
+                    <span className="text-gray-300 mx-3">|</span>
+                    <DeleteButton id={user.id} name={user.name} />
                   </td>
                 </StaggeredItem>
               ))}
