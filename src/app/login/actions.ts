@@ -17,7 +17,7 @@ export async function login(formData: FormData) {
     return { error: 'Correo o contraseña incorrectos.' }
   }
 
-  redirect('/admin/usuarios')
+  redirect('/')
 }
 
 export async function logout() {

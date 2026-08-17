@@ -43,7 +43,7 @@ export async function middleware(request: NextRequest) {
 
   // Redirigir lejos del login si ya está logueado
   if (request.nextUrl.pathname === '/login' && user) {
-    return NextResponse.redirect(new URL('/admin/usuarios', request.url))
+    return NextResponse.redirect(new URL('/', request.url))
   }
 
   // La raíz ahora es pública (Landing Page)
