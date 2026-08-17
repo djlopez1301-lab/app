@@ -15,18 +15,18 @@ export default function Home() {
       <main className="flex flex-col w-full flex-1">
         {/* Hero Section */}
         <section className="relative flex items-center h-[480px] w-full overflow-hidden bg-[#0d346b]">
-          {/* Image Container - Right side on desktop, full width on mobile */}
-          <div className="absolute inset-y-0 right-0 w-full md:w-[75%] lg:w-[65%] z-0">
+          {/* Image Container - Right 70% of screen */}
+          <div className="absolute inset-y-0 right-0 w-full md:w-[75%] lg:w-[70%] z-0">
             <Image
               src="/hero-bg.jpg"
-              alt="Niños en clase"
+              alt="Plantando un árbol con una niña"
               fill
               priority
               className="object-cover"
-              style={{ objectPosition: 'center 30%' }}
+              style={{ objectPosition: 'center 45%' }}
             />
-            {/* Gradient to seamlessly blend the image left edge into the solid blue background */}
-            <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0d346b] via-[#0d346b]/80 to-transparent w-full md:w-[50%]"></div>
+            {/* Gradient to blend image into the solid blue left side */}
+            <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to right, #0d346b 0%, rgba(13,52,107,0.7) 20%, rgba(13,52,107,0.15) 35%, transparent 45%)' }}></div>
           </div>
           {/* Bottom shadow from header */}
           <div className="absolute top-0 left-0 right-0 h-8 z-10" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.15), transparent)' }}></div>
