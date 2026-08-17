@@ -14,7 +14,7 @@ export default function Home() {
       
       <main className="flex flex-col w-full flex-1">
         {/* Hero Section */}
-        <section className="relative flex items-center min-h-[500px] max-h-[60vh] w-full shadow-inner">
+        <section className="relative flex items-center min-h-[400px] max-h-[50vh] w-full shadow-inner">
           {/* Background Image with Object Cover */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -22,7 +22,7 @@ export default function Home() {
               alt="Niños en clase"
               fill
               priority
-              className="object-cover object-right"
+              className="object-cover object-[20%_30%]"
             />
           </div>
 
