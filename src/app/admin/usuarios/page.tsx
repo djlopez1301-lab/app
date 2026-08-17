@@ -18,7 +18,7 @@ export default async function UsuariosPage() {
       <FadeIn className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
         <div>
           <h1 className="text-3xl font-bold text-white tracking-tight">Directorio de Usuarios</h1>
-          <p className="text-white/70 mt-1">Administra los accesos a &quot;Por lempira siempre&quot;.</p>
+          <p className="text-white/70 mt-1">Administra los accesos a &quot;Por Lempiras Siempre&quot;.</p>
         </div>
         
         <HeaderActions />
