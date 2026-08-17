@@ -26,7 +26,7 @@ export default function Home() {
               style={{ objectPosition: 'center 30%' }}
             />
             {/* Gradient to seamlessly blend the image left edge into the solid blue background */}
-            <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0d346b] via-[#0d346b]/80 to-transparent w-full md:w-3/4"></div>
+            <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0d346b] via-[#0d346b]/80 to-transparent w-full md:w-[50%]"></div>
           </div>
           {/* Bottom shadow from header */}
           <div className="absolute top-0 left-0 right-0 h-8 z-10" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.15), transparent)' }}></div>
