@@ -23,12 +23,12 @@ export default function Home() {
               fill
               priority
               className="object-cover"
-              style={{ objectPosition: '35% center' }}
+              style={{ objectPosition: '60% 30%' }}
             />
           </div>
 
-          {/* Gradient: strong blue only on left 35%, fully transparent by 50% */}
-          <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to right, #0d346b 0%, #0d346b 20%, rgba(13,52,107,0.6) 30%, rgba(13,52,107,0.05) 42%, transparent 50%)' }}></div>
+          {/* Gradient: solid blue left 12%, fades out completely by 35% */}
+          <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to right, #0d346b 0%, #0d346b 12%, rgba(13,52,107,0.85) 20%, rgba(13,52,107,0.4) 28%, rgba(13,52,107,0.05) 35%, transparent 40%)' }}></div>
           {/* Bottom shadow from header */}
           <div className="absolute top-0 left-0 right-0 h-8 z-10" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.15), transparent)' }}></div>
 
