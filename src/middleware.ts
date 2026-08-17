@@ -46,14 +46,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/admin/usuarios', request.url))
   }
 
-  // La raíz redirige según estado
-  if (request.nextUrl.pathname === '/') {
-    if (user) {
-      return NextResponse.redirect(new URL('/admin/usuarios', request.url))
-    } else {
-      return NextResponse.redirect(new URL('/login', request.url))
-    }
-  }
+  // La raíz ahora es pública (Landing Page)
+  // No redirigimos '/' a ningún lado.
 
   return supabaseResponse
 }
