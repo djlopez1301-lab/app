@@ -50,7 +50,7 @@ export default function Home() {
 
               <FadeIn delay={0.3}>
                 <p className="text-white/90 text-lg font-medium leading-relaxed max-w-lg mb-8">
-                  Apoyamos a estudiantes de Lempira con becas educativas para construir un mejor mañana.
+                  El futuro que soñamos lo construimos juntos.
                 </p>
               </FadeIn>
 
