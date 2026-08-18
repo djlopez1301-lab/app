@@ -36,7 +36,7 @@ export default function Home() {
             <div className="max-w-xl">
               <FadeIn>
                 <h1 className="text-white font-bold text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight">
-                  El futuro que
+                  El Futuro Que
                   <br />
                   <span className="font-script text-[#4dc2f8] font-normal text-6xl md:text-7xl lg:text-8xl lowercase -mt-4 block transform -rotate-2">soñamos</span>
                 </h1>
@@ -50,7 +50,7 @@ export default function Home() {
 
               <FadeIn delay={0.3}>
                 <p className="text-white/90 text-lg font-medium leading-relaxed max-w-lg mb-8">
-                  lo construimos juntos.
+                  Lo construiremos juntos...
                 </p>
               </FadeIn>
 
