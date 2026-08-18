@@ -35,19 +35,37 @@ export async function middleware(request: NextRequest) {
   )
 
   const { data: { user } } = await supabase.auth.getUser()
+  const pathname = request.nextUrl.pathname
 
-  // Proteger rutas de admin
-  if (request.nextUrl.pathname.startsWith('/admin') && !user) {
+  const isPublicRoute = 
+    pathname === '/login' || 
+    pathname === '/recuperar' || 
+    pathname === '/actualizar-clave' || 
+    pathname.startsWith('/auth/callback')
+
+  // 1. Si no hay usuario y no es una ruta pública, exigir login
+  if (!user && !isPublicRoute) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
-  // Redirigir lejos del login si ya está logueado
-  if (request.nextUrl.pathname === '/login' && user) {
+  // 2. Redirigir al inicio si ya está autenticado e intenta ir a login
+  if (user && pathname === '/login') {
     return NextResponse.redirect(new URL('/', request.url))
   }
 
-  // La raíz ahora es pública (Landing Page)
-  // No redirigimos '/' a ningún lado.
+  // 3. Proteger rutas de admin por rol (solo Administrador)
+  if (user && pathname.startsWith('/admin')) {
+    const { data: emp } = await supabase
+      .from('empleados')
+      .select('role')
+      .eq('id', user.id)
+      .single()
+
+    if (!emp || emp.role?.toLowerCase() !== 'administrador') {
+      // Si es Gestor de ayudas u otro rol no administrador, redirigir al inicio
+      return NextResponse.redirect(new URL('/', request.url))
+    }
+  }
 
   return supabaseResponse
 }
